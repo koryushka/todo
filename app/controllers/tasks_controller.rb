@@ -15,8 +15,6 @@ class TasksController < ApplicationController
         f.js{}
       end
     end 
-
-    
   end
 
   def update
@@ -29,11 +27,7 @@ class TasksController < ApplicationController
         }
         f.js{}
       end
-
-    
-  
     end
-    
   end
 
   def destroy
@@ -49,6 +43,6 @@ class TasksController < ApplicationController
   private
 
   def tasks_params
-    params.require(:task).permit(:content, :is_not_done)    
+    params.require(:task).permit(:content, :is_done)    
   end
 end

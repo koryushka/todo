@@ -16,6 +16,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'less-rails'
 gem "twitter-bootstrap-rails"
 gem 'haml-rails'
+gem 'quiet_assets', '~> 1.0.3'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
