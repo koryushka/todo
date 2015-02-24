@@ -1,0 +1,10 @@
+%tr{id: "#{t.id}"}
+  = form_for t, url:{controller: :tasks, action: :update, id: t.id}, remote: true do |f|
+    %td.update{style:"width:5%;"}
+      %div{style:"margin:0 auto;display:table; "}
+        =f.check_box :is_not_done
+
+    %td{style:"width:75%"}
+      = t.content
+  %td{style:"width:20%"}
+    = link_to "Destroy task",{action: :destroy, id: t.id},method: :delete, remote: true

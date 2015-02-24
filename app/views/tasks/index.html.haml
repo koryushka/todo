@@ -1,0 +1,17 @@
+%h1 Todo list
+
+%table.table.table-hover.table-bordered
+  = form_for @task, remote: true do |f|
+    %tr
+      %td
+        = check_box_tag(nil, nil, false,disabled: true)
+      %td
+        = f.text_field :content, autocomplete: "off"
+%table.table.table-hover.table-bordered.todo
+  - @tasks_done.each do |t|
+    = render 'tasks/task', t: t
+%h1 
+  %small Already done          
+%table.table.table-hover.table-bordered.done
+  - @tasks_todo.each do |t|
+    = render 'tasks/task', t: t
