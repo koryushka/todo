@@ -1,6 +1,6 @@
 -if params[:task][:is_done]=="1"
   $("tr[id=#{escape_javascript(render text: @task.id)}]").removeClass('success').addClass('danger')
-  $('.done').prepend($("tr[id=#{escape_javascript(render text: @task.id)}]")).fadeIn()
+  $('.done').delay(2200).prepend($("tr[id=#{escape_javascript(render text: @task.id)}]")).fadeIn()
 -elsif params[:task][:is_done]=="0"  
   $("tr[id=#{escape_javascript(render text: @task.id)}]").removeClass('danger').addClass('success')
   $('.todo').prepend($("tr[id=#{escape_javascript(render text: @task.id)}]")).fadeIn()
