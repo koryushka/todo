@@ -1,14 +1,12 @@
 class TasksController < ApplicationController
 	def index  
     @tasks_done = Task.all.done.order(created_at: :desc)
-    @tasks_todo = Task.all.to_do
+    @tasks_todo = Task.all.to_do.order(created_at: :desc)
     @task = Task.new
   end
 
   def create
     @task = Task.new(tasks_params)
-    @tasks_done = Task.all.done.order(created_at: :desc)
-    @tasks_todo = Task.all.to_do
     if @task.save
       respond_to do |f|
         f.html{redirect_to root_path}
@@ -43,6 +41,6 @@ class TasksController < ApplicationController
   private
 
   def tasks_params
-    params.require(:task).permit(:content, :is_done)    
+    params.fetch(:task, {}).permit(:content, :is_done)    
   end
 end

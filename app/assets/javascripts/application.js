@@ -16,24 +16,36 @@
 //= require turbolinks
 //= require_tree .
 
+
+
+// $(function(){
+//   $(".update :checkbox").each(function(){
+//     $(this).on("change", function(e){
+//       $(this.form).submit()
+//       //e.preventDefault();
+//     })
+
+//   })  
+// })
 $(function(){
-	$(".update :checkbox").each(function(){
-		$(this).change(function(e){
-      //$(this).closest('tr').fadeOut()
-      
-      $(this.form).submit()
+  $(document).on("change", ".update :checkbox", function(){
+    
+    $("#edit_task_"+ $(this).closest('tr').attr("id")).submit()
 
-      //e.preventDefault();
-		})
-		
-	})
-
-})
+  
+  })
+})  
 
 
 
 
-$(function(){
 
 
-})
+
+
+
+
+
+
+
+

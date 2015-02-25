@@ -1,3 +1,4 @@
+
 %tr{id: "#{task.id}"}
   = form_for task, url:{controller: :tasks, action: :update, id: task.id}, remote: true do |f|
     %td.update{style:"width:5%;"}
