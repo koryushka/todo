@@ -36,7 +36,7 @@ $(function(){
       type: "POST",
       url: "tasks/"+w_id+"/resolve",
       beforeSend: function(){
-        
+        origin.css("background-color","#BDB4F9")
       },
       success: function(){
         setTimeout(function(){
