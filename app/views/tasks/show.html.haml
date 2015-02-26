@@ -1,0 +1,6 @@
+%h4
+  = @task.content
+%hr
+= @task.is_done ? "is done"  : "todo"  
+%br
+=link_to "Back", :back  

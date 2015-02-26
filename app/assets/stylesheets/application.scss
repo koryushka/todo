@@ -14,8 +14,27 @@
  *= require_tree .
  *= require_self
  */
+.todo{
+  .well{background-color: #F8EE89}
+  a:link, a:hover, a:active, a {color:#000;};
+}
+
 
 .done{
+  opacity: 0.75;
 	color:grey;
   a:link, a:hover, a:active, a {color:grey;};
+  .well{background-color: #6EE893}
+}
+
+.well2{
+  -webkit-transition: all 1.5s ease;
+  -moz-transition: all 1.5s ease;
+  -o-transition: all 1.5s ease;
+  transition: all 1.5s ease;
+}
+
+.justDone{
+  padding-top:20px;
+  height: 57px;
 }

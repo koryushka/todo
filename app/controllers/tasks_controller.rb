@@ -5,6 +5,11 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def show
+    @task = Task.find(params[:id])
+    
+  end
+
   def create
     @task = Task.new(tasks_params)
     if @task.save
@@ -39,8 +44,13 @@ class TasksController < ApplicationController
   end
 
   def resolve
-    @task = Task.find(params[:id])
-    @task.resolve! if @task
+    task = Task.find(params[:id])
+    task.resolve! if task
+  end
+
+  def unresolve
+    task = Task.find(params[:id])
+    task.unresolve! if task    
   end
 
 private

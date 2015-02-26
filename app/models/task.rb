@@ -5,4 +5,8 @@ class Task < ActiveRecord::Base
   def resolve!
   	self.update_attributes(is_done:true)
   end
+
+  def unresolve!
+  	self.update_attributes(is_done:false)
+  end
 end

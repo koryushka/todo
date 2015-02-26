@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :tasks do
     post :resolve, on: :member
+    post :unresolve, on: :member
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

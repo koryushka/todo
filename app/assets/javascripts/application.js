@@ -31,7 +31,16 @@ $(function(){
     var w_id = $(this).closest('.well').attr('id')
     var origin = $(".well[id="+w_id+"]")
     var clone = $(".well[id="+w_id+"]").clone()
+
+
+
     if($(this).is(":checked")){
+      if($(".todo :checkbox").length==1){
+        setTimeout(function(){
+          $(".todo").html("<h3>Congratulations! Your todo list is empty.<h3>")
+        },1700)
+        
+      }
       $.ajax({
         type: "POST",
         url: "tasks/"+w_id+"/resolve",
@@ -39,22 +48,31 @@ $(function(){
           origin.css("background-color","#BDB4F9")
         },
         success: function(){
+          origin.text("Done!").addClass('justDone')
           setTimeout(function(){
-            origin.css("background-color","#BDB4F9")
-
-          },100)
-          setTimeout(function(){
-            origin.text("Done!")
-            clone.fadeIn("slow").prependTo('.done')
-
-          },700)
-          setTimeout(function(){
-            origin.slideUp(function(){this.remove})
-            clone.find(":checkbox").prop("checked", true)
+            clone.slideDown(700).prependTo('.done').css("background-color","#E8E4FF")
           },1000)
-
+          setTimeout(function(){origin.slideUp(700)},1000)
+          setTimeout(function(){origin.remove()},1700)
+          setTimeout(function(){clone.css("background-color","#6EE893")}, 3000)
         } 
       })
+    } else {
+      $("#congratulations").hide()
+      if($(".todo:contains('list')")){
+        $('.todo h3').remove()
+      }
+      $.ajax({
+        type: "POST",
+        url: "tasks/"+w_id+"/unresolve",
+        success: function(){
+            clone.slideDown(700).prependTo('.todo').css("background-color","#E8E4FF")
+            origin.slideUp(700)  
+          setTimeout(function(){origin.remove()},1700)
+          setTimeout(function(){clone.css("background-color","#F8EE89")}, 3000)
+        } 
+      })
+
     }
   })  
 }) 

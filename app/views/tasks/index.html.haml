@@ -9,10 +9,14 @@
       %td
         = f.text_field :content, autocomplete: "off"
 .todo
-  - @tasks_todo.each do |t|
-    = render 'tasks/task', task: t
+  -if !@tasks_todo.empty?
+    - @tasks_todo.each do |t|
+      = render 'tasks/task', task: t
+  -else
+    #congratulations
+      %h3 No tasks...  
 %h1 
   %small Already done          
-.done
+.done{style:"width:70%;margin:0 auto; display:table;"}
   - @tasks_done.each do |t|
     = render 'tasks/task', task: t
