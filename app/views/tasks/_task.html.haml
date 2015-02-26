@@ -1,11 +1,11 @@
-.well.well-sm{id: "#{task.id}"}
-  %ul.list-inline{style:"width:100%;text-align:justify"}
-    %li{style:"width:5%;"}
+.well.well-sm{id: "#{task.id}",style:"margin:0;border-color:#fff"}
+  %ul.list-inline{style:"width:100%;text-align:justify;padding:0;margin:0;"}
+    %li{style:"width:5%;border-right:2px solid grey;"}
       = form_for task, url:{controller: :tasks, action: :update, id: task.id},method: :patch, remote: true do |f|
         .update
-          %div{style:"margin:0 auto;display:table; "}
+          %div{style:"margin:0 auto;display:table;"}
             =f.check_box :is_done
-    %li{style:"width:70%;text-align:justify"}       
+    %li.text{style:"width:70%;text-align:justify"}       
       = link_to truncate(task.content, length: 100), task_path(task)
     %li{style:"width:18%"}   
       = link_to "Destroy task",{action: :destroy, id: task.id},method: :delete, remote: true
