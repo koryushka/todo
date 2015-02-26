@@ -15,7 +15,10 @@
  *= require_self
  */
 .todo{
-  .well{background-color: #F8EE89}
+  .well{
+    background-color: #F8EE89;
+    &:hover{background-color:#DED363;}
+  }
   a:link, a:hover, a:active, a {color:#000;};
 }
 
@@ -26,9 +29,12 @@
 	color:grey;
   a:link, a:hover, a:active, a {
     color:grey;
+    &:hover{color:#fff;};
   };
   .well{
     background-color: #6EE893;
+    padding:0;
+    &:hover{background-color:#4EBE6F;};
   }
 }
 
