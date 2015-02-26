@@ -18,25 +18,45 @@
 
 
 
-// $(function(){
-//   $(".update :checkbox").each(function(){
-//     $(this).on("change", function(e){
-//       $(this.form).submit()
-//       //e.preventDefault();
-//     })
 
-//   })  
-// })
 $(function(){
   $(document).on("change", ".update :checkbox", function(){
-    
-    $("#edit_task_"+ $(this).closest('tr').attr("id")).submit()
-
-  
+    $("#edit_task_"+ $(this).closest('.well').attr("id")).submit()
   })
 })  
 
 
+$(function(){
+  $(document).on("click",".d a",function(){
+    var w_id = $(this).closest('.well').attr('id')
+    var origin = $(".well[id="+w_id+"]")
+    var clone = $(".well[id="+w_id+"]").clone()
+
+    $.ajax({
+      type: "POST",
+      url: "tasks/"+w_id+"/resolve",
+      beforeSend: function(){
+        
+      },
+      success: function(){
+        setTimeout(function(){
+          origin.css("background-color","#BDB4F9")
+
+        },100)
+        setTimeout(function(){
+          origin.text("Done!")
+          clone.fadeIn("slow").prependTo('.done')
+
+        },700)
+        setTimeout(function(){
+          origin.slideUp(function(){this.remove})
+          clone.find(":checkbox").prop("checked", true)
+        },1000)
+
+      }
+    })
+  })  
+})
 
 
 

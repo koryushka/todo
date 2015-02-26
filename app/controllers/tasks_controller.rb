@@ -38,7 +38,12 @@ class TasksController < ApplicationController
     end
   end
 
-  private
+  def resolve
+    @task = Task.find(params[:id])
+    @task.resolve! if @task
+  end
+
+private
 
   def tasks_params
     params.fetch(:task, {}).permit(:content, :is_done)    

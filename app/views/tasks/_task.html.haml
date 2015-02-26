@@ -1,11 +1,16 @@
-
-%tr{id: "#{task.id}"}
-  = form_for task, url:{controller: :tasks, action: :update, id: task.id}, remote: true do |f|
-    %td.update{style:"width:5%;"}
-      %div{style:"margin:0 auto;display:table; "}
-        =f.check_box :is_done
-
-    %td{style:"width:75%"}
-      = task.content
-  %td{style:"width:20%"}
-    = link_to "Destroy task",{action: :destroy, id: task.id},method: :delete, remote: true
+.well{id: "#{task.id}"}
+  %ul.list-inline
+    %li{style:"width:5%;"}
+      = form_for task, url:{controller: :tasks, action: :update, id: task.id},method: :patch, remote: true do |f|
+        .update
+          %div{style:"margin:0 auto;display:table; "}
+            =f.check_box :is_done
+    %li{style:"width:65%"}       
+      %div
+        = task.content
+    %li{style:"width:10%"}     
+      %div
+        = link_to "Destroy task",{action: :destroy, id: task.id},method: :delete, remote: true
+    %li{style:"width:10%"}   
+      %div.d
+        = link_to "Done", "#" , remote: true
