@@ -1,4 +1,4 @@
-.well{id: "#{task.id}"}
+.well.well-sm{id: "#{task.id}"}
   %ul.list-inline
     %li{style:"width:5%;"}
       = form_for task, url:{controller: :tasks, action: :update, id: task.id},method: :patch, remote: true do |f|
@@ -11,6 +11,3 @@
     %li{style:"width:10%"}     
       %div
         = link_to "Destroy task",{action: :destroy, id: task.id},method: :delete, remote: true
-    %li{style:"width:10%"}   
-      %div.d
-        = link_to "Done", "#" , remote: true
