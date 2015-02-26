@@ -22,15 +22,15 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    respond_to do |format|
     if @task.update_attributes(tasks_params)
-      respond_to do |f|
-        f.html{
-          redirect_to root_path
-          flash[:notice] = "Task rebuild"
-        }
-        f.js{}
-      end
+      format.html { redirect_to(@task, :notice => 'User was successfully updated.') }
+      format.json { respond_with_bip(@task) }
+    else
+      format.html { render :action => "show" }
+      format.json { respond_with_bip(@task) }
     end
+  end
   end
 
   def destroy

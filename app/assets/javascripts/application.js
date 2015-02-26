@@ -13,17 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require best_in_place
+//= require jquery-ui
+//= require best_in_place.jquery-ui
+
 //= require_tree .
 
 
 
 
-// $(function(){
-//   $(document).on("change", ".update :checkbox", function(){
-//     $("#edit_task_"+ $(this).closest('.well').attr("id")).submit()
-//   })
-// })  
 
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
 
 $(function(){
   $(document).on("change",".update :checkbox",function(){
