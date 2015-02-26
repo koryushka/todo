@@ -27,36 +27,37 @@ $(function(){
 
 
 $(function(){
-  $(document).on("click",".d a",function(){
+  $(document).on("change",".update :checkbox",function(){
     var w_id = $(this).closest('.well').attr('id')
     var origin = $(".well[id="+w_id+"]")
     var clone = $(".well[id="+w_id+"]").clone()
-
-    $.ajax({
-      type: "POST",
-      url: "tasks/"+w_id+"/resolve",
-      beforeSend: function(){
-        origin.css("background-color","#BDB4F9")
-      },
-      success: function(){
-        setTimeout(function(){
+    if($(this).is(":checked")){
+      $.ajax({
+        type: "POST",
+        url: "tasks/"+w_id+"/resolve",
+        beforeSend: function(){
           origin.css("background-color","#BDB4F9")
+        },
+        success: function(){
+          setTimeout(function(){
+            origin.css("background-color","#BDB4F9")
 
-        },100)
-        setTimeout(function(){
-          origin.text("Done!")
-          clone.fadeIn("slow").prependTo('.done')
+          },100)
+          setTimeout(function(){
+            origin.text("Done!")
+            clone.fadeIn("slow").prependTo('.done')
 
-        },700)
-        setTimeout(function(){
-          origin.slideUp(function(){this.remove})
-          clone.find(":checkbox").prop("checked", true)
-        },1000)
+          },700)
+          setTimeout(function(){
+            origin.slideUp(function(){this.remove})
+            clone.find(":checkbox").prop("checked", true)
+          },1000)
 
-      }
-    })
+        } 
+      })
+    }
   })  
-})
+}) 
 
 
 
