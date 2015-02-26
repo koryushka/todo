@@ -29,6 +29,10 @@ $(document).ready(function() {
 });
 
 $(function(){
+  $(document).on("hover",".done", function(){
+    $(this).css("background-color","red")
+  } )
+
   $(document).on("change",".update :checkbox",function(){
     var w_id = $(this).closest('.well').attr('id')
     var origin = $(".well[id="+w_id+"]")
@@ -37,7 +41,7 @@ $(function(){
 
 
     if($(this).is(":checked")){
-      if($(".todo :checkbox").length==1){
+      if($(".todo :checkbox").prop("visibility", "visible").length==1){
         setTimeout(function(){
           $(".todo").html("<h3>Congratulations! Your todo list is empty.<h3>")
         },1700)
@@ -52,7 +56,7 @@ $(function(){
         success: function(){
           origin.text("Done!").addClass('justDone')
           setTimeout(function(){
-            clone.slideDown(700).prependTo('.done').css("background-color","#E8E4FF")
+            clone.slideDown(700).prependTo('.done').css("background-color","#3A8750")
           },1000)
           setTimeout(function(){origin.slideUp(700)},1000)
           setTimeout(function(){origin.remove()},1700)
@@ -68,7 +72,7 @@ $(function(){
         type: "POST",
         url: "tasks/"+w_id+"/unresolve",
         success: function(){
-            clone.slideDown(700).prependTo('.todo').css("background-color","#E8E4FF")
+            clone.slideDown(700).prependTo('.todo').css("background-color","#DED363")
             origin.slideUp(700)  
           setTimeout(function(){origin.remove()},1700)
           setTimeout(function(){clone.css("background-color","#F8EE89")}, 3000)

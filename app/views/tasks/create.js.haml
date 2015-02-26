@@ -1,3 +1,5 @@
-$('.todo').prepend("#{escape_javascript(render (@task))}")
+$("#{escape_javascript(render (@task))}").css("background-color","#ABA246").prependTo('.todo')
+setTimeout(function(){$(".well[id=#{escape_javascript(render text: @task.id)}]").css("background-color","#F8EE89")},1500)
+
 $('.main-form input').val('')
 $('#congratulations').hide()
