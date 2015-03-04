@@ -17,6 +17,8 @@ gem 'less-rails'
 gem "twitter-bootstrap-rails"
 gem 'haml-rails'
 
+gem 'whenever', :require => false
+
 # Use jquery as the JavaScript library
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
@@ -31,6 +33,8 @@ gem 'best_in_place', '~> 3.0.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+gem 'devise', :git => 'https://github.com/plataformatec/devise.git', :branch => 'lm-rails-4-2'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

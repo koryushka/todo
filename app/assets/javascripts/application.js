@@ -16,8 +16,17 @@
 //= require best_in_place
 //= require jquery-ui
 //= require best_in_place.jquery-ui
-
 //= require_tree .
+// $(window).bind("beforeunload", function(e) { 
+//   $.ajax({
+//     url: "tasks/session_clear",
+//     type: "POST",
+//     data: {}
+//     });
+// })
+
+
+
 
 
 
@@ -28,11 +37,22 @@ $(document).ready(function() {
   jQuery(".best_in_place").best_in_place();
 });
 
-$(function(){
-  $(document).on("hover",".done", function(){
+
+  $(document).on("hover",".done .well", function(){
     $(this).css("background-color","red")
   } )
 
+
+$(function(){
+
+
+$("#ex").on("click", function(){
+    $.ajax({
+    url: "tasks/session_clear",
+    type: "POST",
+    data: {}
+    });
+})
   $(document).on("change",".update :checkbox",function(){
     var w_id = $(this).closest('.well').attr('id')
     var origin = $(".well[id="+w_id+"]")

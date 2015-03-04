@@ -1,6 +1,10 @@
 %h4
-  = best_in_place @task, :content, as: :textarea
+  = best_in_place_if !@task.is_done, @task, :content, as: :textarea
 %hr
-= @task.is_done ? "is done"  : "todo"  
+#ex{:title => "Click to change state", "data-toggle" =>"tooltip"}
+  = best_in_place @task, :is_done, as: :select,collection: {false => "todo", true => "done"}
 %br
 =link_to "Back", :back  
+= current_user.try(:id)
+
+

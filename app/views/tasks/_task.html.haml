@@ -6,6 +6,6 @@
           %div{style:"margin:0 auto;display:table;"}
             =f.check_box :is_done
     %li.text{style:"width:70%;text-align:justify;margin-left:10px"}       
-      = link_to truncate(task.content, length: 100), task_path(task)
+      = link_to truncate(task.content, length: 100), [try(:current_user), task]
     %li{style:"width:18%"}   
       = link_to "Destroy task",{action: :destroy, id: task.id},method: :delete, remote: true

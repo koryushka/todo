@@ -1,5 +1,17 @@
+- if user_signed_in?
+  = link_to "My tasks", user_tasks_path(@user)
+  = link_to "Sign out", destroy_user_session_path, method: :delete
 
-%h1 Todo list
+- else
+  = link_to "Sign in", new_user_session_path  
+  = "Demo user id: #{@user.id}"
+  = cookies[:last_seen]
+  #ex.btn.btn-default.pull-right
+    Reset
+%h1 Todo list 
+%h4
+  %small 
+    = @user.try(:email)
 %table.table.table-hover.table-bordered.main-form
   = form_for @task, remote: true do |f|
     %tr
@@ -8,6 +20,9 @@
         = check_box_tag(nil, nil, false,disabled: true)
       %td
         = f.text_field :content, autocomplete: "off"
+
+
+   
 .todo
   -if !@tasks_todo.empty?
     - @tasks_todo.each do |t|

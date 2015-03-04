@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
+  
   root 'tasks#index'
+  devise_for :users
+resources :users do
+  resources :tasks do
+    post :resolve, on: :member
+    post :unresolve, on: :member
+  end
+end
 
   resources :tasks do
+    collection do
+      post :session_clear
+    end
     post :resolve, on: :member
     post :unresolve, on: :member
   end
