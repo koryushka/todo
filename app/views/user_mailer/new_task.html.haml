@@ -1,0 +1,4 @@
+Dear #{User.find(@user_id).email} you just created new task:
+%h3 #{User.find(@user_id).tasks.last.content}
+/*= image_tag attachments['2.jpg'].url, alt: "My photo", width:"200px"
+
