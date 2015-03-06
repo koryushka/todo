@@ -1,3 +1,4 @@
+#require "resque_web"
 Rails.application.routes.draw do
   
   root 'tasks#index'
@@ -16,6 +17,8 @@ end
     post :resolve, on: :member
     post :unresolve, on: :member
   end
+  #mount ResqueWeb::Engine => "/resque_web"
+  #ResqueWeb::Engine.eager_load!
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
