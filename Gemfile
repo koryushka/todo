@@ -36,6 +36,13 @@ gem 'best_in_place', '~> 3.0.1'
 
 gem 'devise', :git => 'https://github.com/plataformatec/devise.git', :branch => 'lm-rails-4-2'
 
+
+gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+#gem 'resque_mailer'
+gem 'resque-web', require: 'resque_web', git: 'https://github.com/resque/resque-web.git', branch: 'resque-2'
+#gem 'resque-scheduler'
+
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

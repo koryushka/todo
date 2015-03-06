@@ -37,8 +37,8 @@ class TasksController < ApplicationController
     @task = @user.tasks.build(tasks_params)
       if @task.save
         if user_signed_in?
-        #  Resque.enqueue(EmailJob, @user.id)
-          UserMailer.new_task(@user.id).deliver_later
+          Resque.enqueue(EmailJob, @user.id)
+          #UserMailer.new_task(@user.id).deliver_later
         end
         respond_to do |f|
           f.html{redirect_to root_path}
